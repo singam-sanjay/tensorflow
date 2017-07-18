@@ -44,6 +44,7 @@ class MatMulOp : public XlaOpKernel {
   ~MatMulOp() override = default;
 
   void Compile(XlaOpKernelContext* ctx) override {
+    LOG(INFO) << "Converting matmul opt.\n";
     const TensorShape a_shape = ctx->InputShape(0);
     const TensorShape b_shape = ctx->InputShape(1);
 

@@ -595,6 +595,7 @@ ComputationDataHandle ComputationBuilder::Lt(
 
 ComputationDataHandle ComputationBuilder::Dot(
     const ComputationDataHandle& lhs, const ComputationDataHandle& rhs) {
+  LOG(INFO) << "Dot\n.";
   return BinaryOp(BINOP_DOT, lhs, rhs, /*broadcast_dimensions=*/{});
 }
 
@@ -885,18 +886,21 @@ ComputationDataHandle ComputationBuilder::CustomCall(
 ComputationDataHandle ComputationBuilder::Add(
     const ComputationDataHandle& lhs, const ComputationDataHandle& rhs,
     tensorflow::gtl::ArraySlice<int64> broadcast_dimensions) {
+  LOG(INFO) << "Add\n";
   return BinaryOp(BINOP_ADD, lhs, rhs, broadcast_dimensions);
 }
 
 ComputationDataHandle ComputationBuilder::Sub(
     const ComputationDataHandle& lhs, const ComputationDataHandle& rhs,
     tensorflow::gtl::ArraySlice<int64> broadcast_dimensions) {
+  LOG(INFO) << "Sub\n";
   return BinaryOp(BINOP_SUB, lhs, rhs, broadcast_dimensions);
 }
 
 ComputationDataHandle ComputationBuilder::Mul(
     const ComputationDataHandle& lhs, const ComputationDataHandle& rhs,
     tensorflow::gtl::ArraySlice<int64> broadcast_dimensions) {
+  LOG(INFO) << "Mul\n";
   return BinaryOp(BINOP_MUL, lhs, rhs, broadcast_dimensions);
 }
 
@@ -1106,6 +1110,7 @@ ComputationDataHandle ComputationBuilder::UnaryOp(
   if (!first_error_.ok() || !PrepareComputation().ok()) {
     return ComputationDataHandle();
   }
+  LOG(INFO) << "UnOp\n";
 
   UnaryOpRequest request;
   request.set_unop(unop);
@@ -1129,6 +1134,7 @@ ComputationDataHandle ComputationBuilder::BinaryOp(
   if (!first_error_.ok() || !PrepareComputation().ok()) {
     return ComputationDataHandle();
   }
+  LOG(INFO) << "BinaryOp.\n";
 
   BinaryOpRequest request;
   request.set_binop(binop);

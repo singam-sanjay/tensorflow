@@ -30,6 +30,7 @@ class ResourceApplyGradientDescent : public XlaOpKernel {
   explicit ResourceApplyGradientDescent(OpKernelConstruction* ctx)
       : XlaOpKernel(ctx) {}
   void Compile(XlaOpKernelContext* ctx) override {
+    LOG(INFO) << "creating GradientDescent XLA op";
     xla::ComputationDataHandle handle;
     xla::ComputationBuilder* b = ctx->builder();
     OP_REQUIRES_OK(ctx, ctx->ReadVariableInput(0, &handle));

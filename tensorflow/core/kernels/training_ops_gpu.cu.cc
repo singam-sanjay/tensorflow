@@ -17,6 +17,7 @@ limitations under the License.
 
 #define EIGEN_USE_GPU
 
+#include <iostream>
 #include "tensorflow/core/kernels/training_ops.h"
 #include "tensorflow/core/framework/register_types.h"
 
@@ -34,6 +35,8 @@ struct ApplyGradientDescent<GPUDevice, T> {
     bcast[0] = grad.dimension(0);
     Eigen::Sizes<1> single;
     var.device(d) -= lr.reshape(single).broadcast(bcast) * grad;
+    static int count = 1;
+    std::cout << "ApplyGradientDescentGPU " << count++ << '\n';
   }
 };
 

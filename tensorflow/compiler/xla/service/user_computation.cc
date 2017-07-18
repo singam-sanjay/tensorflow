@@ -1020,6 +1020,8 @@ StatusOr<ComputationDataHandle> UserComputation::AddCallInstruction(
     const CallRequest& call_request,
     const UserComputation& to_apply_computation) {
   tensorflow::mutex_lock lock(mutex_);
+  
+  LOG(INFO) << __func__ << '\n';
 
   std::vector<const Shape*> operand_shapes;
   for (const ComputationDataHandle& handle : call_request.operands()) {
@@ -1055,6 +1057,8 @@ StatusOr<ComputationDataHandle> UserComputation::AddCustomCallInstruction(
     const CustomCallRequest& custom_call_request) {
   tensorflow::mutex_lock lock(mutex_);
 
+  LOG(INFO) << __func__ << '\n';
+  
   for (const ComputationDataHandle& handle : custom_call_request.operands()) {
     TF_RETURN_IF_ERROR(LookUpRequest(handle).status());
   }

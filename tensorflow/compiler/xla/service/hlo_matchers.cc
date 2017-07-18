@@ -51,6 +51,7 @@ bool HloMatcher::MatchAndExplain(
         string explanation = inner_listener.str();
         if (!explanation.empty()) {
           *listener << ", " << explanation;
+	  LOG(INFO) << ", " << explanation;
         }
       }
       return false;

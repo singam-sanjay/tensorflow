@@ -49,6 +49,7 @@ struct ApplyGradientDescent<CPUDevice, T> {
                   typename TTypes<T>::ConstScalar lr,
                   typename TTypes<T>::ConstFlat grad) {
     var.device(d) -= grad * lr();
+    LOG(INFO) << "ApplyGradientDescent" << '\n';
   }
 };
 
