@@ -69,7 +69,7 @@ class Executor {
   // stats. This allows us to collect statistics and traces on demand.
   //
   // RunAsync() is provided a "call_frame", if the executor is used
-  // for executing a function, is used to pass arguments and return
+  // for executing a function, which is used to pass arguments and return
   // values between the caller and the callee.
   //
   // RunAsync() uses "cancellation_manager", if not nullptr, to
